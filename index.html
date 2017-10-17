@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" rel="stylesheet"/>
+    <title>SmallDiary</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="eight columns offset-by-one">
+        <h1>SmallDiary</h1>
+      </div>
+      <writearea></writearea>
+      <pages></pages>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.7.3/riot+compiler.min.js"></script>
+    <script src="write.tag" type="riot/tag"></script>
+    <script src="pages.tag" type="riot/tag"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+    <script src="db.js"></script>
+    <script>
+     var config = {
+         apiKey: "AIzaSyAORXdzqfP2nxtWl96b3iDuSDagn4PWQmo",
+         authDomain: "smalldiary-683c0.firebaseapp.com",
+         databaseURL: "https://smalldiary-683c0.firebaseio.com",
+         projectId: "smalldiary-683c0",
+         storageBucket: "smalldiary-683c0.appspot.com",
+         messagingSenderId: "376136983946"
+     };
+     firebase.initializeApp(config);
+     riot.mount('writearea');
+     riot.mount('pages');
+
+    </script>
+  </body>
+</html>
