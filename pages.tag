@@ -105,6 +105,7 @@
        margin: 50px 0;
    }
    .entry-body { border-bottom: 1px solid lightgray; }
+   .entry-body * { padding: 0 20px;  }
    .text { margin: 10px 0; }
   </style>
 </page>
