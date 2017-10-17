@@ -24,8 +24,11 @@
        self.textarea.removeAttribute('disabled');
    }
    doPost(e) {
-       self.textarea.setAttribute('disabled', 'disabled');
-       post(this.textarea.value, this.onComplete);
+       var text = this.textarea.value;
+       if (text.trim().length > 0) {
+           self.textarea.setAttribute('disabled', 'disabled');
+           post(text, this.onComplete);
+       }
    }
   </script>
 </writearea>
