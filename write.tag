@@ -10,22 +10,26 @@
   </form>
 
   <style>
-   textarea { height: 100px; }
+   textarea { height: 100px; resize: vertical; }
   </style>
 
   <script>
    var self = this;
    this.on('mount', function() {
        this.textarea = document.querySelector('#text');
+       this.submit = document.querySelector('#submit');
    });
 
    onComplete() {
        self.textarea.value = '';
        self.textarea.removeAttribute('disabled');
+       self.submit.removeAttribute('disabled');
    }
+
    doPost(e) {
        var text = this.textarea.value;
        if (text.trim().length > 0) {
+           self.submit.setAttribute('disabled', 'disabled');
            self.textarea.setAttribute('disabled', 'disabled');
            post(text, this.onComplete);
        }
