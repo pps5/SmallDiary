@@ -89,13 +89,15 @@
 <page>
   <div class="row">
     <div class="nine columns offset-by-one entry-body">
-      <p class="u-full-width text">{ this.text }</p>
+      <div class="u-full-width text">
+        <raw content={ this.text }></raw>
+      </div>
       <div class="u-pull-right">{ this.datetime }</div>
     </div>
   </div>
 
   <script>
-   this.text = opts.detail.text;
+   this.text = opts.detail.text.replace(/\r?\n/g, '<br>');
    this.datetime = new Date(opts.detail.datetime).toLocaleString();
   </script>
 
@@ -104,8 +106,14 @@
        display: block;
        margin: 50px 0;
    }
+   raw { display: block; }
    .entry-body { border-bottom: 1px solid lightgray; }
    .entry-body * { padding: 0 20px;  }
    .text { margin: 10px 0; }
   </style>
 </page>
+
+<raw>
+  <span></span>
+  this.root.innerHTML = opts.content;
+</raw>
