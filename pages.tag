@@ -106,7 +106,7 @@
        display: block;
        margin: 50px 0;
    }
-   raw { display: block; }
+   raw { display: block; word-wrap: break-word; }
    .entry-body { border-bottom: 1px solid lightgray; }
    .entry-body * { padding: 0 20px;  }
    .text { margin: 10px 0; }
