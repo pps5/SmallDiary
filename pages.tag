@@ -29,13 +29,13 @@
   <script>
    const SINGLE_PAGE_MAX = 10;
    var self = this;
-   this.maxPageNum = 0;
-   this.pageNum = 0;
-   this.entries = [];
-   this.visibleEntries = [];
+   self.maxPageNum = 0;
+   self.pageNum = 0;
+   self.entries = [];
+   self.visibleEntries = [];
 
-   this.on('mount', function() {
-       this.spinner = document.querySelector('.sk-circle');
+   self.on('mount', function() {
+       self.spinner = document.querySelector('.sk-circle');
    });
 
    setEntryAddedListener(function(snapshot) {
@@ -48,34 +48,24 @@
    });
 
    updateVisibleEntries(isAdded) {
-       if (isAdded) {
-           self.visibleEntries.unshift(self.entries[self.pageNum * SINGLE_PAGE_MAX]);
-           if (self.visibleEntries.length > SINGLE_PAGE_MAX) {
-               self.visibleEntries.pop();
-           }
-       } else {
-           self.visibleEntries = [];
-           var visibleBegin = self.pageNum * SINGLE_PAGE_MAX;
-           var visibleEnd = visibleBegin + SINGLE_PAGE_MAX;
-           if (visibleEnd > self.entries.length) {
-               visibleEnd = self.entries.length;
-           }
-           for (let i = visibleBegin; i < visibleEnd; i++) {
-               self.visibleEntries.push(self.entries[i]);
-           }
+       var visibleBegin = self.pageNum * SINGLE_PAGE_MAX;
+       var visibleEnd = visibleBegin + SINGLE_PAGE_MAX;
+       if (visibleEnd > self.entries.length) {
+           visibleEnd = self.entries.length;
        }
+       self.visibleEntries = self.entries.slice(visibleBegin, visibleEnd);
    }
 
    goNext() {
-       if (this.pageNum < this.maxPageNum) {
-           this.pageNum++;
+       if (self.pageNum < self.maxPageNum) {
+           self.pageNum++;
            self.updateVisibleEntries();
        }
    }
 
    goPrev() {
-       if (this.pageNum > 0) {
-           this.pageNum--;
+       if (self.pageNum > 0) {
+           self.pageNum--;
            self.updateVisibleEntries();
        }
    }

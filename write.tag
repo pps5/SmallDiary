@@ -4,7 +4,7 @@
       <div class="nine columns offset-by-one">
         <textarea class="u-full-width" cols="30" id="text" rows="10"></textarea>
         <input id="submit" class="button-primary" type="button" value="SUBMIT" onclick={ doPost }/>
-        <input id="image" class="button-primary" type="button" value="IMAGE"/>
+        <!-- <input id="image" class="button-primary" type="button" value="IMAGE"/> -->
       </div>
     </div>
   </form>
@@ -15,9 +15,9 @@
 
   <script>
    var self = this;
-   this.on('mount', function() {
-       this.textarea = document.querySelector('#text');
-       this.submit = document.querySelector('#submit');
+   self.on('mount', function() {
+       self.textarea = document.querySelector('#text');
+       self.submit = document.querySelector('#submit');
    });
 
    onComplete() {
@@ -27,11 +27,11 @@
    }
 
    doPost(e) {
-       var text = this.textarea.value;
+       var text = self.textarea.value;
        if (text.trim().length > 0) {
            self.submit.setAttribute('disabled', 'disabled');
            self.textarea.setAttribute('disabled', 'disabled');
-           post(text, this.onComplete);
+           post(text, self.onComplete);
        }
    }
   </script>
